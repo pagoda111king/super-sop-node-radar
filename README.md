@@ -121,6 +121,8 @@ Summarize one node map:
 python3 scripts/summarize_node.py data-modeling.database
 ```
 
+Current note: the first public version uses local validation scripts. GitHub Actions can be added after the repository token has workflow permission.
+
 ## Relationship To Super SOP Node OS
 
 Super SOP Node OS is the method and execution protocol:
