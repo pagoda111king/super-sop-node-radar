@@ -43,3 +43,26 @@ python3 scripts/validate_registry.py
 ```
 
 For project-like changes, update the relevant report under `radar/reports/`.
+
+## Fixed Reference Inspectors
+
+For monitoring major architecture references, use:
+
+```bash
+python3 scripts/validate_inspectors.py
+python3 scripts/run_reference_inspection.py
+```
+
+Fixed inspectors live in:
+
+```text
+inspectors/reference-projects.json
+```
+
+The chief inspector report goes to:
+
+```text
+chief-inspector/reports/YYYY-MM-DD-reference-inspection.md
+```
+
+Do not directly change the core 14-node taxonomy from an inspector report. Produce a proposal for user review.

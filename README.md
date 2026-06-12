@@ -138,6 +138,46 @@ Super SOP Node Radar is the living evidence base:
 - test real performance
 - sediment approved adapters and skills
 
+## Fixed Reference Inspectors
+
+Some projects are not ordinary candidates. They are major reference systems that should be watched continuously because their updates can influence the node architecture itself.
+
+The fixed inspector set is in:
+
+```text
+inspectors/reference-projects.json
+```
+
+It currently tracks:
+
+```text
+OpenAI Codex / Agents SDK, Anthropic, Google ADK / A2A,
+Microsoft Agent Framework / Magentic-One, LangGraph,
+OpenClaw / ClawHub, OpenMAIC, Hermes Agent, Feishu Aily,
+Coze, DeerFlow, AgentScope
+```
+
+Generate a metadata-first inspection snapshot:
+
+```bash
+python3 scripts/validate_inspectors.py
+python3 scripts/run_reference_inspection.py
+```
+
+Project inspector reports are written to:
+
+```text
+inspectors/runs/YYYY-MM-DD/
+```
+
+The chief inspector proposal is written to:
+
+```text
+chief-inspector/reports/YYYY-MM-DD-reference-inspection.md
+```
+
+The chief inspector cannot directly change the 14-node taxonomy. It only proposes optimizations for user review.
+
 ## Main Rule
 
 Do not promote a project from candidate to approved without evidence.

@@ -11,6 +11,35 @@ Every week:
 - add new candidates only when they match a node capability
 - mark stale candidates for review
 
+## Reference Inspector Rhythm
+
+For fixed architecture reference projects, run every Monday and Thursday:
+
+```text
+Monday -> Thursday -> Monday
+```
+
+This gives a 3-4 day rhythm.
+
+Run:
+
+```bash
+python3 scripts/validate_inspectors.py
+python3 scripts/run_reference_inspection.py
+```
+
+Then the chief inspector should decide whether external updates deserve:
+
+- no action
+- watch
+- document pattern
+- update node design
+- update rail design
+- propose compound pattern
+- propose taxonomy change
+
+The chief inspector proposes. The user decides.
+
 ## Monthly Review
 
 Every month:
@@ -37,4 +66,3 @@ Every quarter:
 | Do | Scan, normalize, review, test. |
 | Check | Score and compare against evidence. |
 | Act | Approve, reject, defer, or sediment adapter. |
-

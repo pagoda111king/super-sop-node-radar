@@ -19,3 +19,12 @@ When changing entries:
 - run `python3 scripts/validate_registry.py`
 
 The long-term goal is to connect GitHub projects, CLIs, MCP servers, skills, plugins, and software products to the 14-node Super SOP architecture.
+
+For fixed reference project inspection, use:
+
+```bash
+python3 scripts/validate_inspectors.py
+python3 scripts/run_reference_inspection.py
+```
+
+Read `inspectors/reference-projects.json` and `docs/REFERENCE_INSPECTOR_SYSTEM.md` before making architecture recommendations.

@@ -65,3 +65,13 @@ Read only what is needed:
 - `references/classification-model.md` for node classification.
 - `references/database-node-playbook.md` for database capability design.
 
+## Fixed Reference Inspectors
+
+When the user asks to monitor major reference projects, read `inspectors/reference-projects.json` and use:
+
+```bash
+python3 scripts/validate_inspectors.py
+python3 scripts/run_reference_inspection.py
+```
+
+The chief inspector can propose node, rail, or compound-pattern improvements, but cannot directly modify the core taxonomy without user approval.

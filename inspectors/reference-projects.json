@@ -1,0 +1,450 @@
+{
+  "schema_version": "reference-inspectors.v1",
+  "created_at": "2026-06-12",
+  "cadence": "Every Monday and Thursday, roughly every 3-4 days.",
+  "mission": "Continuously inspect fixed reference projects for architecture changes that may improve Super SOP Node OS.",
+  "super_sop_memory": {
+    "node_system": "6 layers, 14 core nodes, 4 cross-cutting rails, 2 compound patterns",
+    "core_nodes": [
+      "intake",
+      "context_memory",
+      "radar",
+      "evidence_normalize",
+      "data_modeling",
+      "planning",
+      "routing",
+      "learning",
+      "action",
+      "test",
+      "score",
+      "check",
+      "handoff",
+      "sediment"
+    ],
+    "rails": [
+      "observe_trace",
+      "policy_permission",
+      "artifact_registry",
+      "human_team"
+    ],
+    "decision_rule": "Do not add or reshape nodes from external updates unless the change is recurring, testable, and improves the Super SOP system."
+  },
+  "impact_levels": [
+    "no_action",
+    "watch",
+    "document_pattern",
+    "update_node_design",
+    "update_rail_design",
+    "propose_new_compound_pattern",
+    "propose_taxonomy_change"
+  ],
+  "inspectors": [
+    {
+      "id": "openai_codex_agents",
+      "name": "OpenAI Codex / Agents SDK Inspector",
+      "priority": "P0",
+      "sources": [
+        {
+          "type": "github",
+          "name": "OpenAI Codex",
+          "repo": "openai/codex",
+          "url": "https://github.com/openai/codex"
+        },
+        {
+          "type": "github",
+          "name": "OpenAI Agents SDK Python",
+          "repo": "openai/openai-agents-python",
+          "url": "https://github.com/openai/openai-agents-python"
+        },
+        {
+          "type": "docs",
+          "name": "OpenAI Agents Guide",
+          "url": "https://developers.openai.com/api/docs/guides/agents"
+        },
+        {
+          "type": "docs",
+          "name": "Codex AGENTS.md",
+          "url": "https://developers.openai.com/codex/guides/agents-md"
+        },
+        {
+          "type": "docs",
+          "name": "Codex Skills",
+          "url": "https://developers.openai.com/codex/skills"
+        }
+      ],
+      "watch_for": [
+        "tool calling and handoff changes",
+        "skills and project instruction changes",
+        "sandbox, worktree, permission, and review changes",
+        "guardrails, tracing, evals, and sessions"
+      ],
+      "node_relevance": [
+        "context_memory",
+        "routing",
+        "action",
+        "score",
+        "check",
+        "handoff",
+        "sediment"
+      ]
+    },
+    {
+      "id": "anthropic_effective_agents",
+      "name": "Anthropic Effective Agents / Claude Code Inspector",
+      "priority": "P0",
+      "sources": [
+        {
+          "type": "article",
+          "name": "Building Effective Agents",
+          "url": "https://www.anthropic.com/research/building-effective-agents"
+        },
+        {
+          "type": "article",
+          "name": "Demystifying Evals for AI Agents",
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+        },
+        {
+          "type": "docs",
+          "name": "Claude Code Hooks",
+          "url": "https://code.claude.com/docs/en/agent-sdk/hooks"
+        }
+      ],
+      "watch_for": [
+        "workflow patterns",
+        "subagents and hooks",
+        "evaluator-optimizer changes",
+        "agent evaluation practice"
+      ],
+      "node_relevance": [
+        "planning",
+        "routing",
+        "test",
+        "score",
+        "check",
+        "sediment"
+      ]
+    },
+    {
+      "id": "google_adk_a2a",
+      "name": "Google ADK / A2A Inspector",
+      "priority": "P0",
+      "sources": [
+        {
+          "type": "github",
+          "name": "Google ADK Python",
+          "repo": "google/adk-python",
+          "url": "https://github.com/google/adk-python"
+        },
+        {
+          "type": "github",
+          "name": "A2A",
+          "repo": "a2aproject/A2A",
+          "url": "https://github.com/a2aproject/A2A"
+        },
+        {
+          "type": "docs",
+          "name": "Google ADK Docs",
+          "url": "https://adk.dev/"
+        },
+        {
+          "type": "blog",
+          "name": "A2A Announcement",
+          "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"
+        }
+      ],
+      "watch_for": [
+        "sessions, memory, and artifacts",
+        "agent-to-agent task and artifact protocol",
+        "enterprise agent development and deployment"
+      ],
+      "node_relevance": [
+        "context_memory",
+        "data_modeling",
+        "routing",
+        "handoff",
+        "artifact_registry"
+      ]
+    },
+    {
+      "id": "microsoft_agent_framework",
+      "name": "Microsoft Agent Framework / Magentic-One Inspector",
+      "priority": "P0",
+      "sources": [
+        {
+          "type": "github",
+          "name": "Microsoft Agent Framework",
+          "repo": "microsoft/agent-framework",
+          "url": "https://github.com/microsoft/agent-framework"
+        },
+        {
+          "type": "docs",
+          "name": "Agent Framework Overview",
+          "url": "https://learn.microsoft.com/en-us/agent-framework/overview/"
+        },
+        {
+          "type": "article",
+          "name": "Magentic-One",
+          "url": "https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/"
+        }
+      ],
+      "watch_for": [
+        "orchestrator-worker architecture",
+        "state, middleware, filters, and telemetry",
+        "multi-agent planning and replanning"
+      ],
+      "node_relevance": [
+        "planning",
+        "routing",
+        "data_modeling",
+        "observe_trace",
+        "check"
+      ]
+    },
+    {
+      "id": "langgraph",
+      "name": "LangGraph Inspector",
+      "priority": "P0",
+      "sources": [
+        {
+          "type": "github",
+          "name": "LangGraph",
+          "repo": "langchain-ai/langgraph",
+          "url": "https://github.com/langchain-ai/langgraph"
+        },
+        {
+          "type": "docs",
+          "name": "LangGraph Overview",
+          "url": "https://docs.langchain.com/oss/python/langgraph/overview"
+        },
+        {
+          "type": "docs",
+          "name": "LangGraph Persistence",
+          "url": "https://docs.langchain.com/oss/python/langgraph/persistence"
+        }
+      ],
+      "watch_for": [
+        "durable execution",
+        "persistence and checkpointing",
+        "interrupts and human-in-the-loop",
+        "memory and stores"
+      ],
+      "node_relevance": [
+        "context_memory",
+        "planning",
+        "routing",
+        "check",
+        "sediment"
+      ]
+    },
+    {
+      "id": "openclaw_clawhub",
+      "name": "OpenClaw / ClawHub Inspector",
+      "priority": "P0",
+      "sources": [
+        {
+          "type": "github",
+          "name": "OpenClaw",
+          "repo": "openclaw/openclaw",
+          "url": "https://github.com/openclaw/openclaw"
+        },
+        {
+          "type": "github",
+          "name": "ClawHub",
+          "repo": "openclaw/clawhub",
+          "url": "https://github.com/openclaw/clawhub"
+        },
+        {
+          "type": "docs",
+          "name": "OpenClaw Skills",
+          "url": "https://docs.openclaw.ai/tools/skills"
+        },
+        {
+          "type": "docs",
+          "name": "ClawHub Skill Format",
+          "url": "https://docs.openclaw.ai/clawhub/skill-format"
+        }
+      ],
+      "watch_for": [
+        "skill format changes",
+        "plugin packaging",
+        "registry trust, moderation, and versioning",
+        "tool permissions and installation flows"
+      ],
+      "node_relevance": [
+        "context_memory",
+        "action",
+        "check",
+        "handoff",
+        "sediment",
+        "policy_permission"
+      ]
+    },
+    {
+      "id": "openmaic",
+      "name": "OpenMAIC Inspector",
+      "priority": "P1",
+      "sources": [
+        {
+          "type": "github",
+          "name": "OpenMAIC",
+          "repo": "THU-MAIC/OpenMAIC",
+          "url": "https://github.com/THU-MAIC/OpenMAIC"
+        }
+      ],
+      "watch_for": [
+        "interactive learning modules",
+        "multi-agent classroom patterns",
+        "quiz, simulation, project-based learning",
+        "voice, whiteboard, and teaching flows"
+      ],
+      "node_relevance": [
+        "learning",
+        "test",
+        "score",
+        "sediment"
+      ]
+    },
+    {
+      "id": "hermes_agent",
+      "name": "Hermes Agent Inspector",
+      "priority": "P1",
+      "sources": [
+        {
+          "type": "github",
+          "name": "Hermes Agent",
+          "repo": "NousResearch/hermes-agent",
+          "url": "https://github.com/NousResearch/hermes-agent"
+        },
+        {
+          "type": "docs",
+          "name": "Hermes Agent Docs",
+          "url": "https://hermes-agent.nousresearch.com/docs/"
+        }
+      ],
+      "watch_for": [
+        "persistent agent memory",
+        "searchable conversation history",
+        "messaging gateways",
+        "automated skill creation"
+      ],
+      "node_relevance": [
+        "context_memory",
+        "handoff",
+        "sediment"
+      ]
+    },
+    {
+      "id": "feishu_aily",
+      "name": "Feishu Aily Inspector",
+      "priority": "P1",
+      "sources": [
+        {
+          "type": "docs",
+          "name": "Feishu Aily Getting Started",
+          "url": "https://www.feishu.cn/hc/en-US/articles/790732948604-get-started-with-feishu-aily"
+        }
+      ],
+      "watch_for": [
+        "enterprise AI workflows",
+        "Feishu docs, Base, approval, task, IM integration",
+        "business system building patterns",
+        "Chinese enterprise agent productization"
+      ],
+      "node_relevance": [
+        "data_modeling",
+        "handoff",
+        "policy_permission",
+        "human_team"
+      ]
+    },
+    {
+      "id": "coze",
+      "name": "Coze Studio / Coze Loop Inspector",
+      "priority": "P1",
+      "sources": [
+        {
+          "type": "github",
+          "name": "Coze Studio",
+          "repo": "coze-dev/coze-studio",
+          "url": "https://github.com/coze-dev/coze-studio"
+        },
+        {
+          "type": "github",
+          "name": "Coze Loop",
+          "repo": "coze-dev/coze-loop",
+          "url": "https://github.com/coze-dev/coze-loop"
+        }
+      ],
+      "watch_for": [
+        "visual workflow nodes",
+        "DAG execution",
+        "node metadata and input/output maps",
+        "prompt debugging, eval sets, experiments, traces"
+      ],
+      "node_relevance": [
+        "data_modeling",
+        "planning",
+        "routing",
+        "test",
+        "score",
+        "observe_trace"
+      ]
+    },
+    {
+      "id": "deerflow",
+      "name": "DeerFlow Inspector",
+      "priority": "P1",
+      "sources": [
+        {
+          "type": "github",
+          "name": "DeerFlow",
+          "repo": "bytedance/deer-flow",
+          "url": "https://github.com/bytedance/deer-flow"
+        }
+      ],
+      "watch_for": [
+        "long-horizon agent architecture",
+        "subagents, memory, sandboxes, filesystem, gateways",
+        "skills and tool execution patterns"
+      ],
+      "node_relevance": [
+        "context_memory",
+        "routing",
+        "action",
+        "check",
+        "sediment"
+      ]
+    },
+    {
+      "id": "agentscope",
+      "name": "AgentScope Inspector",
+      "priority": "P1",
+      "sources": [
+        {
+          "type": "github",
+          "name": "AgentScope",
+          "repo": "agentscope-ai/agentscope",
+          "url": "https://github.com/agentscope-ai/agentscope"
+        },
+        {
+          "type": "docs",
+          "name": "AgentScope Docs",
+          "url": "https://doc.agentscope.io/"
+        }
+      ],
+      "watch_for": [
+        "event streams",
+        "permissions and workspace sandbox",
+        "multi-session services",
+        "middleware, tracing, evaluation, agent teams"
+      ],
+      "node_relevance": [
+        "routing",
+        "action",
+        "observe_trace",
+        "policy_permission",
+        "human_team"
+      ]
+    }
+  ]
+}
