@@ -1,5 +1,7 @@
 # Super SOP Node Radar
 
+中文版本：[README.zh-CN.md](README.zh-CN.md)
+
 Everything as Nodes Registry for the Node Era.
 
 This repository is the continuously updated radar for Super SOP Node OS.
