@@ -1,0 +1,49 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "duckdb.duckdb",
+  "name": "DuckDB",
+  "repo": {
+    "owner": "duckdb",
+    "name": "duckdb",
+    "url": "https://github.com/duckdb/duckdb",
+    "description": "DuckDB is an analytical in-process SQL database management system",
+    "stars": 38745,
+    "forks": 3317,
+    "pushed_at": "2026-06-12T11:36:55Z",
+    "latest_release": {
+      "tag": "v1.5.3",
+      "name": "DuckDB v1.5.3 Bugfix Release",
+      "url": "https://github.com/duckdb/duckdb/releases/tag/v1.5.3",
+      "published_at": "2026-05-20T11:50:43Z"
+    },
+    "license": "MIT License",
+    "topics": ["sql", "database", "olap", "analytics", "embedded-database"],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "data_modeling",
+      "fit_level": "primary",
+      "capability": "analytical_workspace",
+      "hypothesis": "DuckDB can power local analytical workspaces for Radar and Evidence Normalize outputs over tabular artifacts."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/duckdb/duckdb",
+      "note": "Repository metadata shows active pushes, MIT license, database/analytics topics, and recent v1.5.3 release."
+    }
+  ],
+  "risks": [
+    "Needs reproducible node artifact benchmark before approval.",
+    "Best fit is analytical workspace, not product transactional backend."
+  ],
+  "next_review_tasks": [
+    "Read official docs for file formats, persistence, and extension model.",
+    "Test local query over CSV/Parquet node artifacts.",
+    "Create adapter template for radar output analysis."
+  ]
+}

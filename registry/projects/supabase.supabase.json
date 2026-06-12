@@ -1,0 +1,56 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "supabase.supabase",
+  "name": "Supabase",
+  "repo": {
+    "owner": "supabase",
+    "name": "supabase",
+    "url": "https://github.com/supabase/supabase",
+    "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
+    "stars": 104064,
+    "forks": 12710,
+    "pushed_at": "2026-06-12T11:27:30Z",
+    "latest_release": {
+      "tag": "v1.26.05",
+      "name": "Developer Update - May 2026",
+      "url": "https://github.com/supabase/supabase/releases/tag/v1.26.05",
+      "published_at": "2026-05-07T23:45:42Z"
+    },
+    "license": "Apache License 2.0",
+    "topics": ["postgres", "postgresql", "database", "auth", "realtime", "storage", "embeddings", "vectors", "ai"],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "data_modeling",
+      "fit_level": "infrastructure",
+      "capability": "product_backend",
+      "hypothesis": "Supabase can support product-grade node systems needing Postgres, auth, realtime, storage, and team-facing app state."
+    },
+    {
+      "node": "handoff",
+      "fit_level": "supporting",
+      "capability": "product_backend",
+      "hypothesis": "Supabase-backed apps can expose node artifacts and state to users or teams."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/supabase/supabase",
+      "note": "Repository metadata shows very high adoption, active pushes, Apache-2.0 license, and Postgres/auth/realtime/storage topics."
+    }
+  ],
+  "risks": [
+    "May be overkill for local-only node runs.",
+    "Hosted service, self-hosting, auth, and permission details need careful review.",
+    "Broad platform scope can hide operational complexity."
+  ],
+  "next_review_tasks": [
+    "Review local development and self-hosting setup.",
+    "Design node artifact schema in Postgres.",
+    "Test auth/permission model for team handoff."
+  ]
+}

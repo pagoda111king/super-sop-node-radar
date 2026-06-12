@@ -1,0 +1,51 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "pgvector.pgvector",
+  "name": "pgvector",
+  "repo": {
+    "owner": "pgvector",
+    "name": "pgvector",
+    "url": "https://github.com/pgvector/pgvector",
+    "description": "Open-source vector similarity search for Postgres",
+    "stars": 21718,
+    "forks": 1203,
+    "pushed_at": "2026-06-11T03:21:05Z",
+    "latest_release": null,
+    "license": "Other",
+    "topics": ["nearest-neighbor-search", "approximate-nearest-neighbor-search"],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "context_memory",
+      "fit_level": "supporting",
+      "capability": "vector_memory",
+      "hypothesis": "pgvector can support semantic memory retrieval when the system already uses Postgres."
+    },
+    {
+      "node": "data_modeling",
+      "fit_level": "supporting",
+      "capability": "vector_memory",
+      "hypothesis": "pgvector can keep relational records and vector search in one Postgres-backed data model."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/pgvector/pgvector",
+      "note": "Repository metadata shows strong adoption and active maintenance signal."
+    }
+  ],
+  "risks": [
+    "Requires Postgres environment and extension setup.",
+    "License and release channel need deeper review.",
+    "Retrieval quality depends on embeddings and indexing choices."
+  ],
+  "next_review_tasks": [
+    "Review install docs and supported Postgres versions.",
+    "Run minimal vector insert/search benchmark.",
+    "Compare against dedicated vector databases for node memory retrieval."
+  ]
+}

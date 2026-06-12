@@ -1,0 +1,44 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "sqlite.sqlite",
+  "name": "SQLite",
+  "repo": {
+    "owner": "sqlite",
+    "name": "sqlite",
+    "url": "https://github.com/sqlite/sqlite",
+    "description": "Official Git mirror of the SQLite source tree",
+    "stars": 9775,
+    "forks": 1530,
+    "pushed_at": "2026-06-12T11:30:20Z",
+    "latest_release": null,
+    "license": "Other",
+    "topics": [],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "data_modeling",
+      "fit_level": "primary",
+      "capability": "local_state_store",
+      "hypothesis": "SQLite can power local node-run state, artifact indexes, small relational stores, and checkpoint metadata."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/sqlite/sqlite",
+      "note": "Official Git mirror is active and widely used, but GitHub release metadata is not the main release channel."
+    }
+  ],
+  "risks": [
+    "GitHub release data is absent, so official SQLite release channel must be reviewed separately.",
+    "Concurrency and migration practices must be documented for agent node runs."
+  ],
+  "next_review_tasks": [
+    "Review official SQLite website and release notes outside GitHub.",
+    "Test local artifact registry schema with SQLite.",
+    "Document backup, migration, and locking rules."
+  ]
+}

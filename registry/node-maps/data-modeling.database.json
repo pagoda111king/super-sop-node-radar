@@ -1,0 +1,89 @@
+{
+  "schema_version": "node-capability.v1",
+  "id": "data-modeling.database",
+  "node": "data_modeling",
+  "capability_family": "database_substrates",
+  "purpose": "Select durable data substrates for node artifacts, local state, analytics, product backends, vector memory, and schema adapters.",
+  "capability_types": [
+    {
+      "id": "local_state_store",
+      "name": "Local State Store",
+      "use_when": "A node run needs durable local state, checkpoints, artifact indexes, or small relational data without a server.",
+      "avoid_when": "The workload needs high-concurrency distributed writes or managed permissions."
+    },
+    {
+      "id": "analytical_workspace",
+      "name": "Analytical Workspace",
+      "use_when": "Radar and Normalize outputs need fast local SQL analysis over CSV, Parquet, JSON, or tabular artifacts.",
+      "avoid_when": "The primary need is multi-user product state or long-running transactional services."
+    },
+    {
+      "id": "vector_memory",
+      "name": "Vector Memory",
+      "use_when": "Context, Radar, or Learning nodes need semantic retrieval over notes, artifacts, documents, or multimodal embeddings.",
+      "avoid_when": "Exact relational queries and transactions are the main requirement."
+    },
+    {
+      "id": "product_backend",
+      "name": "Product Backend",
+      "use_when": "A real user-facing system needs auth, permissions, realtime features, storage, and a Postgres-backed app database.",
+      "avoid_when": "The task is a lightweight local run or isolated analysis."
+    },
+    {
+      "id": "schema_adapter",
+      "name": "Schema Adapter",
+      "use_when": "A project needs typed DB access, migrations, generated clients, or application-level data model discipline.",
+      "avoid_when": "Direct SQL or simple local scripts are enough."
+    }
+  ],
+  "project_refs": [
+    {
+      "project_id": "sqlite.sqlite",
+      "capability_type": "local_state_store",
+      "review_state": "metadata_triaged",
+      "note": "Strong local-first storage candidate; needs adapter and concurrency notes before approval."
+    },
+    {
+      "project_id": "duckdb.duckdb",
+      "capability_type": "analytical_workspace",
+      "review_state": "metadata_triaged",
+      "note": "Strong local analytical workspace candidate for file-backed evidence and radar outputs."
+    },
+    {
+      "project_id": "pgvector.pgvector",
+      "capability_type": "vector_memory",
+      "review_state": "metadata_triaged",
+      "note": "Candidate when vector retrieval should stay inside Postgres."
+    },
+    {
+      "project_id": "qdrant.qdrant",
+      "capability_type": "vector_memory",
+      "review_state": "metadata_triaged",
+      "note": "Dedicated vector search service candidate; requires service setup and retrieval benchmark."
+    },
+    {
+      "project_id": "chroma-core.chroma",
+      "capability_type": "vector_memory",
+      "review_state": "metadata_triaged",
+      "note": "AI-native search infrastructure candidate; needs API and persistence review."
+    },
+    {
+      "project_id": "lancedb.lancedb",
+      "capability_type": "vector_memory",
+      "review_state": "metadata_triaged",
+      "note": "Embedded multimodal retrieval candidate; release is beta-tagged in current metadata and needs test confirmation."
+    },
+    {
+      "project_id": "supabase.supabase",
+      "capability_type": "product_backend",
+      "review_state": "metadata_triaged",
+      "note": "Broad product backend candidate for Postgres, auth, realtime, and storage-backed node systems."
+    },
+    {
+      "project_id": "prisma.prisma",
+      "capability_type": "schema_adapter",
+      "review_state": "metadata_triaged",
+      "note": "Typed application DB adapter candidate for JS/TS projects; not itself a database substrate."
+    }
+  ]
+}

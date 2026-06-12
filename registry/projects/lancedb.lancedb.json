@@ -1,0 +1,49 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "lancedb.lancedb",
+  "name": "LanceDB",
+  "repo": {
+    "owner": "lancedb",
+    "name": "lancedb",
+    "url": "https://github.com/lancedb/lancedb",
+    "description": "Developer-friendly OSS embedded retrieval library for multimodal AI. Search More; Manage Less.",
+    "stars": 10582,
+    "forks": 906,
+    "pushed_at": "2026-06-12T07:04:45Z",
+    "latest_release": {
+      "tag": "python-v0.33.1-beta.2",
+      "name": "Python LanceDB v0.33.1-beta.2",
+      "url": "https://github.com/lancedb/lancedb/releases/tag/python-v0.33.1-beta.2",
+      "published_at": "2026-06-04T06:06:03Z"
+    },
+    "license": "Apache License 2.0",
+    "topics": ["vector-database", "semantic-search", "similarity-search", "image-search", "nearest-neighbor-search"],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "context_memory",
+      "fit_level": "primary",
+      "capability": "vector_memory",
+      "hypothesis": "LanceDB may power embedded multimodal retrieval for local Context and Radar nodes."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/lancedb/lancedb",
+      "note": "Repository metadata shows active pushes, Apache-2.0 license, vector/search topics, and recent beta-tagged Python release."
+    }
+  ],
+  "risks": [
+    "Latest release metadata is beta-tagged, so stability needs careful review.",
+    "Multimodal retrieval claims need task-specific testing."
+  ],
+  "next_review_tasks": [
+    "Review Python package maturity and API stability.",
+    "Test local vector and image metadata retrieval.",
+    "Compare setup friction against Chroma and Qdrant."
+  ]
+}

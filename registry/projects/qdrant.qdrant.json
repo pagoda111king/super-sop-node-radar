@@ -1,0 +1,50 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "qdrant.qdrant",
+  "name": "Qdrant",
+  "repo": {
+    "owner": "qdrant",
+    "name": "qdrant",
+    "url": "https://github.com/qdrant/qdrant",
+    "description": "Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/",
+    "stars": 32054,
+    "forks": 2351,
+    "pushed_at": "2026-06-12T11:37:02Z",
+    "latest_release": {
+      "tag": "v1.18.2",
+      "name": "v1.18.2",
+      "url": "https://github.com/qdrant/qdrant/releases/tag/v1.18.2",
+      "published_at": "2026-06-04T06:50:36Z"
+    },
+    "license": "Apache License 2.0",
+    "topics": ["vector-search", "vector-database", "similarity-search", "hybrid-search", "machine-learning", "search"],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "context_memory",
+      "fit_level": "primary",
+      "capability": "vector_memory",
+      "hypothesis": "Qdrant can power dedicated semantic memory and retrieval services for Context, Radar, and Learning nodes."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/qdrant/qdrant",
+      "note": "Repository metadata shows active pushes, Apache-2.0 license, recent v1.18.2 release, and vector database topics."
+    }
+  ],
+  "risks": [
+    "Requires service deployment or cloud dependency.",
+    "Needs realistic retrieval benchmark before approval.",
+    "Operational overhead may be too high for small local-only node runs."
+  ],
+  "next_review_tasks": [
+    "Test local Docker or binary setup.",
+    "Benchmark retrieval for concept notes and node artifacts.",
+    "Document when Qdrant is preferable to pgvector or embedded stores."
+  ]
+}

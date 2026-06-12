@@ -1,0 +1,31 @@
+{
+  "schema_version": "node-classes.v1",
+  "source": "Super SOP Node OS 1.0.3",
+  "core_nodes": [
+    "intake",
+    "context_memory",
+    "radar",
+    "evidence_normalize",
+    "data_modeling",
+    "planning",
+    "routing",
+    "learning",
+    "action",
+    "test",
+    "score",
+    "check",
+    "handoff",
+    "sediment"
+  ],
+  "cross_cutting_rails": [
+    "observe_trace",
+    "policy_permission",
+    "artifact_registry",
+    "human_team"
+  ],
+  "compound_patterns": [
+    "deploy_publish",
+    "monitor_ops"
+  ],
+  "classification_rule": "Classify every project as core node support, cross-cutting rail support, compound pattern support, or reference. Do not add a new node class before this classification step."
+}

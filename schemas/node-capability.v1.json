@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pagoda111king/super-sop-node-radar/schemas/node-capability.v1.json",
+  "title": "Super SOP Node Capability Map",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "node",
+    "capability_family",
+    "purpose",
+    "capability_types",
+    "project_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "node-capability.v1"
+    },
+    "id": {"type": "string"},
+    "node": {"type": "string"},
+    "capability_family": {"type": "string"},
+    "purpose": {"type": "string"},
+    "capability_types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "use_when"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "use_when": {"type": "string"},
+          "avoid_when": {"type": "string"}
+        }
+      }
+    },
+    "project_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["project_id", "capability_type", "review_state"],
+        "properties": {
+          "project_id": {"type": "string"},
+          "capability_type": {"type": "string"},
+          "review_state": {"type": "string"},
+          "note": {"type": "string"}
+        }
+      }
+    }
+  }
+}

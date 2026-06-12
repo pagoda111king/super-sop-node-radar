@@ -1,0 +1,50 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "prisma.prisma",
+  "name": "Prisma",
+  "repo": {
+    "owner": "prisma",
+    "name": "prisma",
+    "url": "https://github.com/prisma/prisma",
+    "description": "Next-generation ORM for Node.js & TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, MongoDB and CockroachDB",
+    "stars": 46240,
+    "forks": 2240,
+    "pushed_at": "2026-06-12T08:32:43Z",
+    "latest_release": {
+      "tag": "7.8.0",
+      "name": "7.8.0",
+      "url": "https://github.com/prisma/prisma/releases/tag/7.8.0",
+      "published_at": "2026-04-22T14:19:23Z"
+    },
+    "license": "Apache License 2.0",
+    "topics": ["orm", "database", "typescript", "javascript", "nodejs", "postgresql", "sqlite", "mongodb", "query-builder"],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-12",
+  "node_fit": [
+    {
+      "node": "data_modeling",
+      "fit_level": "adapter",
+      "capability": "schema_adapter",
+      "hypothesis": "Prisma can support typed schema access and migrations for JS/TS node systems."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/prisma/prisma",
+      "note": "Repository metadata shows active pushes, Apache-2.0 license, broad DB support, and recent 7.8.0 release."
+    }
+  ],
+  "risks": [
+    "Prisma is an adapter/ORM, not a database substrate.",
+    "Generated client and migration workflows need careful testing in agent-built projects.",
+    "Best fit is JS/TS stacks, not every node runtime."
+  ],
+  "next_review_tasks": [
+    "Test Prisma with SQLite node artifact schema.",
+    "Document migration workflow for agent-generated schema changes.",
+    "Compare with direct SQL and other lightweight schema adapters."
+  ]
+}

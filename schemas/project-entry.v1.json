@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pagoda111king/super-sop-node-radar/schemas/project-entry.v1.json",
+  "title": "Super SOP Node Radar Project Entry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "repo",
+    "review_state",
+    "measured_at",
+    "node_fit",
+    "evidence",
+    "risks",
+    "next_review_tasks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "project-entry.v1"
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "repo": {
+      "type": "object",
+      "required": ["owner", "name", "url"],
+      "properties": {
+        "owner": {"type": "string"},
+        "name": {"type": "string"},
+        "url": {"type": "string"},
+        "description": {"type": ["string", "null"]},
+        "stars": {"type": ["integer", "null"]},
+        "forks": {"type": ["integer", "null"]},
+        "pushed_at": {"type": ["string", "null"]},
+        "latest_release": {
+          "type": ["object", "null"],
+          "properties": {
+            "tag": {"type": "string"},
+            "name": {"type": ["string", "null"]},
+            "url": {"type": "string"},
+            "published_at": {"type": "string"}
+          }
+        },
+        "license": {"type": ["string", "null"]},
+        "topics": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "archived": {"type": "boolean"}
+      }
+    },
+    "review_state": {
+      "enum": [
+        "candidate",
+        "metadata_triaged",
+        "docs_reviewed",
+        "code_reviewed",
+        "tested",
+        "benchmarked",
+        "approved",
+        "deprecated"
+      ]
+    },
+    "measured_at": {
+      "type": "string"
+    },
+    "node_fit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node", "fit_level", "capability", "hypothesis"],
+        "properties": {
+          "node": {"type": "string"},
+          "fit_level": {
+            "enum": ["primary", "supporting", "adapter", "infrastructure", "reference"]
+          },
+          "capability": {"type": "string"},
+          "hypothesis": {"type": "string"}
+        }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": {"type": "number"}
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "url", "note"],
+        "properties": {
+          "type": {"type": "string"},
+          "url": {"type": "string"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_review_tasks": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

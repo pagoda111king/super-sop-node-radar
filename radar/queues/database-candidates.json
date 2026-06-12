@@ -1,0 +1,58 @@
+{
+  "schema_version": "radar-queue.v1",
+  "id": "database-candidates",
+  "created_at": "2026-06-12",
+  "target_node": "data_modeling",
+  "capability_family": "database_substrates",
+  "review_goal": "Find stable projects that can power database-related node capabilities.",
+  "items": [
+    {
+      "project_id": "sqlite.sqlite",
+      "repo": "sqlite/sqlite",
+      "priority": "P0",
+      "next_step": "Review official release channel and test local artifact registry schema."
+    },
+    {
+      "project_id": "duckdb.duckdb",
+      "repo": "duckdb/duckdb",
+      "priority": "P0",
+      "next_step": "Test local SQL analysis over CSV/Parquet node artifacts."
+    },
+    {
+      "project_id": "pgvector.pgvector",
+      "repo": "pgvector/pgvector",
+      "priority": "P1",
+      "next_step": "Run minimal Postgres vector insert/search benchmark."
+    },
+    {
+      "project_id": "qdrant.qdrant",
+      "repo": "qdrant/qdrant",
+      "priority": "P1",
+      "next_step": "Test local service setup and retrieval benchmark."
+    },
+    {
+      "project_id": "chroma-core.chroma",
+      "repo": "chroma-core/chroma",
+      "priority": "P1",
+      "next_step": "Review local/server modes and persistence model."
+    },
+    {
+      "project_id": "lancedb.lancedb",
+      "repo": "lancedb/lancedb",
+      "priority": "P2",
+      "next_step": "Review beta release signal and multimodal retrieval fit."
+    },
+    {
+      "project_id": "supabase.supabase",
+      "repo": "supabase/supabase",
+      "priority": "P1",
+      "next_step": "Review self-hosting, auth, permissions, and product backend fit."
+    },
+    {
+      "project_id": "prisma.prisma",
+      "repo": "prisma/prisma",
+      "priority": "P2",
+      "next_step": "Test schema adapter workflow with SQLite and Postgres node artifacts."
+    }
+  ]
+}
