@@ -18,6 +18,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "inspectors" / "reference-projects.json"
+CONTRACTS = ROOT / "inspectors" / "understanding-contracts.json"
 
 
 def run(cmd: list[str]) -> tuple[int, str]:
@@ -65,6 +66,9 @@ def format_release(meta: dict[str, Any]) -> str:
 def write_project_report(
     run_dir: Path,
     inspector: dict[str, Any],
+    contract: dict[str, Any],
+    default_contract: dict[str, Any],
+    node_chain: list[str],
     github_meta: list[tuple[dict[str, Any], dict[str, Any]]],
     today: str,
 ) -> Path:
@@ -78,11 +82,79 @@ def write_project_report(
         f"- name: {inspector['name']}",
         f"- priority: `{inspector['priority']}`",
         "",
-        "## Sources Checked",
+        "## Inspector Node Chain",
         "",
-        "| Type | Source | URL | Automated Status |",
-        "|---|---|---|---|",
+        "This inspector must pass context through the full chain before making recommendations:",
+        "",
+        "```text",
+        " -> ".join(node_chain),
+        "```",
+        "",
+        "## Understanding Contract",
+        "",
+        f"Logic focus: {contract['logic_focus']}",
+        "",
+        "### Must Read Surfaces",
+        "",
     ]
+    for item in contract["must_read_surfaces"]:
+        lines.append(f"- {item}")
+
+    lines.extend(
+        [
+            "",
+            "### Tracking Surfaces",
+            "",
+        ]
+    )
+    for item in contract["tracking_surfaces"]:
+        lines.append(f"- {item}")
+
+    lines.extend(
+        [
+            "",
+            "### Architecture Questions",
+            "",
+        ]
+    )
+    for item in contract["architecture_questions"]:
+        lines.append(f"- {item}")
+
+    lines.extend(
+        [
+            "",
+            "### Sediment Targets",
+            "",
+        ]
+    )
+    for item in contract["sediment_targets"]:
+        lines.append(f"- {item}")
+
+    lines.extend(
+        [
+            "",
+            "### Required Logic Map",
+            "",
+        ]
+    )
+    for item in default_contract["required_logic_map"]:
+        lines.append(f"- `{item}`")
+    lines.extend(
+        [
+            "",
+            "Current completion status: `incomplete_metadata_only`",
+        ]
+    )
+
+    lines.extend(
+        [
+            "",
+            "## Sources Checked",
+            "",
+            "| Type | Source | URL | Automated Status |",
+            "|---|---|---|---|",
+        ]
+    )
 
     for source in inspector["sources"]:
         status = "manual_review_needed"
@@ -145,7 +217,18 @@ def write_project_report(
             "",
             "## Inspector Interpretation",
             "",
-            "Automated metadata snapshot complete. Deep code, docs, forum, issue, and release-note review should be added by the scheduled inspector run before recommending node changes.",
+            "Automated metadata snapshot complete. This report is not sufficient for node-system recommendations until the understanding contract is filled through docs, code, examples, tests/evals, issues/discussions, and release-note review.",
+            "",
+            "## Understanding Gate",
+            "",
+            "The inspector should not recommend node or taxonomy changes until it can answer:",
+            "",
+            "1. What is this project's real runtime or product logic?",
+            "2. Which architecture primitive changed or improved?",
+            "3. Which Super SOP node, rail, or compound pattern is affected?",
+            "4. What evidence proves the change is real?",
+            "5. What test or benchmark would falsify the recommendation?",
+            "6. What should be sedimented if the recommendation is accepted?",
             "",
             "## Recommendation",
             "",
@@ -164,6 +247,7 @@ def write_project_report(
 def write_chief_report(
     report_dir: Path,
     inspectors: list[dict[str, Any]],
+    node_chain: list[str],
     project_reports: list[Path],
     today: str,
 ) -> Path:
@@ -177,7 +261,13 @@ def write_chief_report(
         "",
         "Confidence: `low_to_medium`",
         "",
-        "This automated pass created a metadata-first snapshot for the fixed reference project inspectors. It should be followed by targeted deep review before any node or rail optimization is accepted.",
+        "This automated pass created a metadata-first snapshot for the fixed reference project inspectors. It should be followed by targeted deep review through the full inspector node chain before any node or rail optimization is accepted.",
+        "",
+        "## Required Inspector Chain",
+        "",
+        "```text",
+        " -> ".join(node_chain),
+        "```",
         "",
         "## Inspectors Covered",
         "",
@@ -197,6 +287,15 @@ def write_chief_report(
     lines.extend(
         [
             "",
+            "## Understanding Gate",
+            "",
+            "| Gate | Current Status | Decision Ceiling |",
+            "|---|---|---|",
+            "| Project logic maps | incomplete metadata-only baseline | `watch` |",
+            "| Evidence normalization | source metadata captured, deep docs/code review pending | `watch` |",
+            "| Testability | no tests or benchmarks run in this snapshot | `watch` |",
+            "",
+            "",
             "## Proposed Changes",
             "",
             "### Accept Now",
@@ -213,7 +312,7 @@ def write_chief_report(
             "",
             "## User Decision Needed",
             "",
-            "Choose whether the next deep review should focus on P0 runtime architecture, evaluation/trace systems, or enterprise interoperability.",
+            "Choose whether the next deep review should focus on P0 runtime architecture, evaluation/trace systems, enterprise interoperability, or learning/memory systems.",
             "",
         ]
     )
@@ -227,6 +326,12 @@ def main() -> int:
     args = parser.parse_args()
 
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    contracts_data = json.loads(CONTRACTS.read_text(encoding="utf-8"))
+    contracts = {
+        contract["inspector_id"]: contract for contract in contracts_data["contracts"]
+    }
+    default_contract = contracts_data["default_contract"]
+    node_chain = contracts_data["minimum_sufficient_node_chain"]
     run_dir = ROOT / "inspectors" / "runs" / args.date
     chief_dir = ROOT / "chief-inspector" / "reports"
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -238,9 +343,19 @@ def main() -> int:
         for source in inspector["sources"]:
             if source["type"] == "github":
                 github_meta.append((source, gh_repo_view(source["repo"])))
-        reports.append(write_project_report(run_dir, inspector, github_meta, args.date))
+        reports.append(
+            write_project_report(
+                run_dir,
+                inspector,
+                contracts[inspector["id"]],
+                default_contract,
+                node_chain,
+                github_meta,
+                args.date,
+            )
+        )
 
-    chief = write_chief_report(chief_dir, config["inspectors"], reports, args.date)
+    chief = write_chief_report(chief_dir, config["inspectors"], node_chain, reports, args.date)
     print(f"OK: wrote {len(reports)} inspector reports and {chief.relative_to(ROOT)}")
     return 0
 

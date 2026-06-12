@@ -75,3 +75,10 @@ python3 scripts/run_reference_inspection.py
 ```
 
 The chief inspector can propose node, rail, or compound-pattern improvements, but cannot directly modify the core taxonomy without user approval.
+
+For deep inspection, also read:
+
+- `inspectors/understanding-contracts.json`
+- `docs/INSPECTOR_NODE_PROTOCOL.md`
+
+Metadata-only reports may only recommend `watch` or `no_action`.

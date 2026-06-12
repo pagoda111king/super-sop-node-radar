@@ -30,6 +30,8 @@ Run the fixed reference inspector cycle for:
 
 Each cycle should produce a chief inspector proposal for user review.
 
+Each project inspector must use the 9-node inspector chain from `docs/INSPECTOR_NODE_PROTOCOL.md` and the understanding contract from `inspectors/understanding-contracts.json`.
+
 The proposal should classify changes as:
 
 - `no_action`
@@ -50,4 +52,3 @@ It can create reports and proposals, but user approval is required before changi
 - 14 core node classes
 - cross-cutting rails
 - compound patterns
-

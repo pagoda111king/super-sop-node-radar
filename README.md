@@ -156,6 +156,18 @@ The fixed inspector set is in:
 inspectors/reference-projects.json
 ```
 
+The deep understanding contract is in:
+
+```text
+inspectors/understanding-contracts.json
+```
+
+The inspector node protocol is in:
+
+```text
+docs/INSPECTOR_NODE_PROTOCOL.md
+```
+
 It currently tracks:
 
 ```text

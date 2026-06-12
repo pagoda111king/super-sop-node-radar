@@ -6,6 +6,63 @@
 - name: Google ADK / A2A Inspector
 - priority: `P0`
 
+## Inspector Node Chain
+
+This inspector must pass context through the full chain before making recommendations:
+
+```text
+scope_lock -> memory_load -> source_radar -> architecture_reading -> change_diff -> evidence_normalize -> impact_modeling -> score_check -> sediment_proposal
+```
+
+## Understanding Contract
+
+Logic focus: How Google ADK and A2A model sessions, memory, artifacts, agent communication, task state, and enterprise handoff.
+
+### Must Read Surfaces
+
+- ADK releases and docs
+- A2A spec and repo updates
+- artifact, session, memory, and tool examples
+- agent-to-agent task protocol examples
+
+### Tracking Surfaces
+
+- google/adk-python releases
+- a2aproject/A2A releases and spec changes
+- ADK docs
+- A2A official posts
+
+### Architecture Questions
+
+- How are sessions, memory, and artifacts represented?
+- What is the task and artifact handoff contract?
+- How are agents discovered and trusted?
+- Which changes should affect Context, Data Modeling, Routing, Handoff, or Artifact Registry?
+
+### Sediment Targets
+
+- artifact contract
+- A2A handoff pattern
+- session memory rule
+- enterprise interop note
+
+### Required Logic Map
+
+- `project_purpose`
+- `main_runtime_model`
+- `core_abstractions`
+- `state_and_memory_model`
+- `tool_or_api_surface`
+- `extension_points`
+- `evaluation_or_testing_model`
+- `permission_or_safety_model`
+- `deployment_or_distribution_model`
+- `examples_or_templates`
+- `where_the_project_is_opinionated`
+- `where_the_project_is_weak_or_unclear`
+
+Current completion status: `incomplete_metadata_only`
+
 ## Sources Checked
 
 | Type | Source | URL | Automated Status |
@@ -38,7 +95,18 @@
 
 ## Inspector Interpretation
 
-Automated metadata snapshot complete. Deep code, docs, forum, issue, and release-note review should be added by the scheduled inspector run before recommending node changes.
+Automated metadata snapshot complete. This report is not sufficient for node-system recommendations until the understanding contract is filled through docs, code, examples, tests/evals, issues/discussions, and release-note review.
+
+## Understanding Gate
+
+The inspector should not recommend node or taxonomy changes until it can answer:
+
+1. What is this project's real runtime or product logic?
+2. Which architecture primitive changed or improved?
+3. Which Super SOP node, rail, or compound pattern is affected?
+4. What evidence proves the change is real?
+5. What test or benchmark would falsify the recommendation?
+6. What should be sedimented if the recommendation is accepted?
 
 ## Recommendation
 

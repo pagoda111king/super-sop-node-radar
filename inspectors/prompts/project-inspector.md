@@ -37,11 +37,49 @@ Deploy/Publish, Monitor/Ops
 
 For the assigned project:
 
-1. Check configured GitHub repos, releases, discussions, issues, and docs.
-2. Identify meaningful changes since the last inspection.
-3. Ignore popularity-only movement.
-4. Map each meaningful update to Super SOP nodes or rails.
-5. Decide whether this is a minor note, node-design improvement, rail improvement, compound pattern, or taxonomy-level signal.
+Use the 9-node inspector chain:
+
+```text
+scope_lock
+-> memory_load
+-> source_radar
+-> architecture_reading
+-> change_diff
+-> evidence_normalize
+-> impact_modeling
+-> score_check
+-> sediment_proposal
+```
+
+Steps:
+
+1. Check configured GitHub repos, releases, discussions, issues, docs, examples, tests/evals, and official announcements.
+2. Fill the project logic map before recommending changes.
+3. Identify meaningful changes since the last inspection.
+4. Ignore popularity-only movement.
+5. Map each meaningful update to Super SOP nodes or rails.
+6. Decide whether this is a minor note, node-design improvement, rail improvement, compound pattern, or taxonomy-level signal.
+
+## Project Logic Map
+
+Do not skip this.
+
+```yaml
+project_purpose:
+main_runtime_model:
+core_abstractions:
+state_and_memory_model:
+tool_or_api_surface:
+extension_points:
+evaluation_or_testing_model:
+permission_or_safety_model:
+deployment_or_distribution_model:
+examples_or_templates:
+where_the_project_is_opinionated:
+where_the_project_is_weak_or_unclear:
+```
+
+If this map is empty, the decision must be `watch` or `no_action`.
 
 ## Output
 
@@ -63,6 +101,10 @@ Use this format:
 
 ...
 
+### Project Logic Map
+
+...
+
 ### Recommendation
 
 Decision: `no_action | watch | document_pattern | update_node_design | update_rail_design | propose_new_compound_pattern | propose_taxonomy_change`
@@ -75,4 +117,3 @@ Next test:
 ## Rule
 
 Do not propose a core taxonomy change unless the evidence is strong, recurring, and testable.
-

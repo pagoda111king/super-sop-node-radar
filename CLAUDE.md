@@ -28,3 +28,5 @@ python3 scripts/run_reference_inspection.py
 ```
 
 Read `inspectors/reference-projects.json` and `docs/REFERENCE_INSPECTOR_SYSTEM.md` before making architecture recommendations.
+
+Also read `inspectors/understanding-contracts.json` and `docs/INSPECTOR_NODE_PROTOCOL.md`. Do not make architecture recommendations from metadata-only inspection.

@@ -63,6 +63,51 @@ Each inspector must output:
 - suggested next action
 - whether the change is local, structural, or potentially taxonomy-changing
 
+Each inspector also has an understanding contract:
+
+```text
+inspectors/understanding-contracts.json
+```
+
+The contract defines:
+
+- what the inspector must read
+- which project surfaces it must track
+- which architecture questions it must answer
+- what sediment it should produce
+
+If the contract is not filled, the inspector can only return `watch` or `no_action`.
+
+## Inspector Node Chain
+
+Each inspector runs a 9-node compound workflow:
+
+```text
+scope_lock
+-> memory_load
+-> source_radar
+-> architecture_reading
+-> change_diff
+-> evidence_normalize
+-> impact_modeling
+-> score_check
+-> sediment_proposal
+```
+
+This chain is explained in:
+
+```text
+docs/INSPECTOR_NODE_PROTOCOL.md
+```
+
+The important rule:
+
+```text
+Do not jump from source scanning directly to recommendation.
+```
+
+A real recommendation must pass through project logic, change diff, evidence, impact, and check.
+
 ## Chief Inspector
 
 The chief inspector reads all project inspector outputs.
@@ -122,6 +167,27 @@ Does it simplify or complicate the taxonomy?
 What happens if we ignore it?
 ```
 
+## Understanding Standard
+
+Every serious inspector report must include a project logic map:
+
+```text
+project purpose
+runtime model
+core abstractions
+state and memory model
+tool/API surface
+extension points
+evaluation/testing model
+permission/safety model
+deployment/distribution model
+examples/templates
+opinionated design choices
+weak or unclear areas
+```
+
+Without this, the inspector does not yet understand the project deeply enough to recommend changing Super SOP Node OS.
+
 ## Output
 
 Each cycle should produce a chief inspector proposal:
@@ -144,4 +210,3 @@ They can only propose:
 - test tasks
 - documentation updates
 - taxonomy change proposals
-

@@ -6,7 +6,13 @@ Decision: `watch`
 
 Confidence: `low_to_medium`
 
-This automated pass created a metadata-first snapshot for the fixed reference project inspectors. It should be followed by targeted deep review before any node or rail optimization is accepted.
+This automated pass created a metadata-first snapshot for the fixed reference project inspectors. It should be followed by targeted deep review through the full inspector node chain before any node or rail optimization is accepted.
+
+## Required Inspector Chain
+
+```text
+scope_lock -> memory_load -> source_radar -> architecture_reading -> change_diff -> evidence_normalize -> impact_modeling -> score_check -> sediment_proposal
+```
 
 ## Inspectors Covered
 
@@ -25,6 +31,15 @@ This automated pass created a metadata-first snapshot for the fixed reference pr
 | DeerFlow Inspector | `P1` | `context_memory`, `routing`, `action`, `check`, `sediment` | `inspectors/runs/2026-06-12/deerflow.md` |
 | AgentScope Inspector | `P1` | `routing`, `action`, `observe_trace`, `policy_permission`, `human_team` | `inspectors/runs/2026-06-12/agentscope.md` |
 
+## Understanding Gate
+
+| Gate | Current Status | Decision Ceiling |
+|---|---|---|
+| Project logic maps | incomplete metadata-only baseline | `watch` |
+| Evidence normalization | source metadata captured, deep docs/code review pending | `watch` |
+| Testability | no tests or benchmarks run in this snapshot | `watch` |
+
+
 ## Proposed Changes
 
 ### Accept Now
@@ -41,4 +56,4 @@ This automated pass created a metadata-first snapshot for the fixed reference pr
 
 ## User Decision Needed
 
-Choose whether the next deep review should focus on P0 runtime architecture, evaluation/trace systems, or enterprise interoperability.
+Choose whether the next deep review should focus on P0 runtime architecture, evaluation/trace systems, enterprise interoperability, or learning/memory systems.

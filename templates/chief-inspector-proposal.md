@@ -24,5 +24,9 @@ Confidence:
 | Node or Rail | Proposed Update | Evidence | Test |
 |---|---|---|---|
 
-## User Decision Needed
+## Understanding Gate
 
+| Inspector | Project Logic Map Complete? | Evidence Complete? | Allowed Decision Ceiling |
+|---|---|---|---|
+
+## User Decision Needed

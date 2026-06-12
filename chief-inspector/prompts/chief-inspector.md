@@ -22,6 +22,19 @@ Prefer this order:
 
 Taxonomy change requires the strongest evidence.
 
+## Understanding Gate
+
+Reject or downgrade any inspector recommendation that does not include:
+
+- project logic map
+- meaningful change diff
+- evidence links
+- node/rail impact
+- testability
+- sediment target
+
+Metadata-only reports can inform `watch`, but not `update_node_design`, `update_rail_design`, `propose_new_compound_pattern`, or `propose_taxonomy_change`.
+
 ## Inputs
 
 - `inspectors/reference-projects.json`
@@ -70,4 +83,3 @@ Confidence:
 ## Safety Rule
 
 Never directly edit the Super SOP core taxonomy. Only propose changes for user approval.
-

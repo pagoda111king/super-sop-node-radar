@@ -1,0 +1,377 @@
+{
+  "schema_version": "inspector-understanding-contracts.v1",
+  "created_at": "2026-06-12",
+  "protocol": "docs/INSPECTOR_NODE_PROTOCOL.md",
+  "minimum_sufficient_node_chain": [
+    "scope_lock",
+    "memory_load",
+    "source_radar",
+    "architecture_reading",
+    "change_diff",
+    "evidence_normalize",
+    "impact_modeling",
+    "score_check",
+    "sediment_proposal"
+  ],
+  "default_contract": {
+    "must_read_surfaces": [
+      "README or docs entry",
+      "latest releases or changelog",
+      "examples or templates",
+      "tests, evals, or benchmarks",
+      "issues, discussions, roadmap, or official announcements when available"
+    ],
+    "required_logic_map": [
+      "project_purpose",
+      "main_runtime_model",
+      "core_abstractions",
+      "state_and_memory_model",
+      "tool_or_api_surface",
+      "extension_points",
+      "evaluation_or_testing_model",
+      "permission_or_safety_model",
+      "deployment_or_distribution_model",
+      "examples_or_templates",
+      "where_the_project_is_opinionated",
+      "where_the_project_is_weak_or_unclear"
+    ],
+    "sediment_outputs": [
+      "pattern_note",
+      "node_or_rail_impact",
+      "next_test",
+      "rejection_or_watch_reason"
+    ]
+  },
+  "contracts": [
+    {
+      "inspector_id": "openai_codex_agents",
+      "logic_focus": "How Codex and the Agents SDK turn tools, handoffs, guardrails, sessions, tracing, skills, project instructions, and sandboxed coding into a reliable agent runtime.",
+      "must_read_surfaces": [
+        "Codex release notes and repo changes",
+        "Agents SDK release notes and examples",
+        "AGENTS.md guidance",
+        "Codex Skills guidance",
+        "tool, handoff, guardrail, tracing, and session docs"
+      ],
+      "tracking_surfaces": [
+        "openai/codex releases and major source changes",
+        "openai/openai-agents-python releases and examples",
+        "official Codex docs",
+        "official Agents SDK docs"
+      ],
+      "architecture_questions": [
+        "How are project instructions loaded and scoped?",
+        "How are tools, handoffs, sessions, and guardrails represented?",
+        "How are sandbox, permissions, review, and rollback handled?",
+        "Which changes should affect Context, Action, Check, Score, Handoff, or Sediment nodes?"
+      ],
+      "sediment_targets": [
+        "project instruction pattern",
+        "skill packaging pattern",
+        "tool and handoff gate",
+        "trace/eval improvement"
+      ]
+    },
+    {
+      "inspector_id": "anthropic_effective_agents",
+      "logic_focus": "How Anthropic frames agent workflows, subagents, hooks, evaluator-optimizer loops, and practical evals.",
+      "must_read_surfaces": [
+        "Building Effective Agents article",
+        "agent evals article",
+        "Claude Code hook docs",
+        "workflow and subagent examples when available"
+      ],
+      "tracking_surfaces": [
+        "Anthropic engineering and research posts",
+        "Claude Code docs",
+        "hook/event lifecycle docs"
+      ],
+      "architecture_questions": [
+        "Which workflow pattern is being recommended?",
+        "Where do hooks intercept the node run?",
+        "How are evaluators designed and calibrated?",
+        "Which changes should affect Planning, Routing, Test, Score, Check, or Sediment nodes?"
+      ],
+      "sediment_targets": [
+        "workflow pattern note",
+        "hook gate pattern",
+        "evaluator design pattern",
+        "score/check improvement"
+      ]
+    },
+    {
+      "inspector_id": "google_adk_a2a",
+      "logic_focus": "How Google ADK and A2A model sessions, memory, artifacts, agent communication, task state, and enterprise handoff.",
+      "must_read_surfaces": [
+        "ADK releases and docs",
+        "A2A spec and repo updates",
+        "artifact, session, memory, and tool examples",
+        "agent-to-agent task protocol examples"
+      ],
+      "tracking_surfaces": [
+        "google/adk-python releases",
+        "a2aproject/A2A releases and spec changes",
+        "ADK docs",
+        "A2A official posts"
+      ],
+      "architecture_questions": [
+        "How are sessions, memory, and artifacts represented?",
+        "What is the task and artifact handoff contract?",
+        "How are agents discovered and trusted?",
+        "Which changes should affect Context, Data Modeling, Routing, Handoff, or Artifact Registry?"
+      ],
+      "sediment_targets": [
+        "artifact contract",
+        "A2A handoff pattern",
+        "session memory rule",
+        "enterprise interop note"
+      ]
+    },
+    {
+      "inspector_id": "microsoft_agent_framework",
+      "logic_focus": "How Microsoft structures orchestrator-worker systems, typed state, middleware, telemetry, graph workflows, and replanning.",
+      "must_read_surfaces": [
+        "Agent Framework releases and docs",
+        "middleware, state, workflow, telemetry docs",
+        "Magentic-One architecture article",
+        "examples of orchestrator-worker delegation"
+      ],
+      "tracking_surfaces": [
+        "microsoft/agent-framework releases",
+        "Microsoft Learn Agent Framework docs",
+        "Microsoft Research Magentic-One updates"
+      ],
+      "architecture_questions": [
+        "How is live plan state represented?",
+        "How do workers receive tasks and return artifacts?",
+        "Where do middleware, filters, telemetry, and safety gates sit?",
+        "Which changes should affect Planning, Routing, Data Modeling, Observe/Trace, or Check?"
+      ],
+      "sediment_targets": [
+        "orchestrator-worker pattern",
+        "typed state pattern",
+        "middleware rail improvement",
+        "telemetry check pattern"
+      ]
+    },
+    {
+      "inspector_id": "langgraph",
+      "logic_focus": "How LangGraph provides durable execution, persistence, checkpoints, interrupts, stores, memory, and human-in-the-loop graph runs.",
+      "must_read_surfaces": [
+        "LangGraph releases",
+        "overview docs",
+        "persistence docs",
+        "interrupt and human-in-the-loop docs",
+        "checkpoint/store examples"
+      ],
+      "tracking_surfaces": [
+        "langchain-ai/langgraph releases",
+        "LangGraph persistence docs",
+        "LangGraph memory and human-in-the-loop docs"
+      ],
+      "architecture_questions": [
+        "What state is durable and what is ephemeral?",
+        "How do checkpoints and stores differ?",
+        "How are interrupts resumed safely?",
+        "Which changes should affect Context, Planning, Routing, Check, or Sediment?"
+      ],
+      "sediment_targets": [
+        "durable run pattern",
+        "checkpoint vs memory rule",
+        "interrupt/resume check",
+        "state schema improvement"
+      ]
+    },
+    {
+      "inspector_id": "openclaw_clawhub",
+      "logic_focus": "How OpenClaw and ClawHub package skills/plugins, gate tools, publish versions, moderate packages, and distribute agent capabilities.",
+      "must_read_surfaces": [
+        "OpenClaw releases and docs",
+        "ClawHub releases and skill format docs",
+        "plugin and skill examples",
+        "moderation, install, and update flows"
+      ],
+      "tracking_surfaces": [
+        "openclaw/openclaw releases",
+        "openclaw/clawhub releases",
+        "OpenClaw docs",
+        "ClawHub docs"
+      ],
+      "architecture_questions": [
+        "What is the current skill/plugin contract?",
+        "How are package trust, moderation, install, and versioning handled?",
+        "How are tools and permissions gated?",
+        "Which changes should affect Context, Action, Check, Handoff, Sediment, or Policy/Permission?"
+      ],
+      "sediment_targets": [
+        "skill format update",
+        "package trust rule",
+        "publish/handoff pattern",
+        "policy permission gate"
+      ]
+    },
+    {
+      "inspector_id": "openmaic",
+      "logic_focus": "How OpenMAIC teaches concepts through interactive classrooms, multi-agent roles, quizzes, simulations, slides, voice, and project transfer.",
+      "must_read_surfaces": [
+        "OpenMAIC releases",
+        "classroom flows",
+        "quiz and simulation modules",
+        "teacher/classmate agent prompts or logic",
+        "voice and whiteboard features"
+      ],
+      "tracking_surfaces": [
+        "THU-MAIC/OpenMAIC releases",
+        "OpenMAIC examples and docs",
+        "learning interaction components"
+      ],
+      "architecture_questions": [
+        "How does the system move from explanation to interaction to test?",
+        "What learning artifacts are produced?",
+        "How are student understanding and transfer tasks evaluated?",
+        "Which changes should affect Learning, Test, Score, or Sediment?"
+      ],
+      "sediment_targets": [
+        "concept learning flow",
+        "quiz/test pattern",
+        "simulation pattern",
+        "knowledge battle enrichment rule"
+      ]
+    },
+    {
+      "inspector_id": "hermes_agent",
+      "logic_focus": "How Hermes Agent maintains persistent agent identity, memory, searchable history, messaging gateways, and automated skill creation.",
+      "must_read_surfaces": [
+        "Hermes Agent releases",
+        "memory and history docs",
+        "messaging gateway docs",
+        "skill creation or automation docs"
+      ],
+      "tracking_surfaces": [
+        "NousResearch/hermes-agent releases",
+        "Hermes docs",
+        "memory and gateway examples"
+      ],
+      "architecture_questions": [
+        "How is long-term memory stored and searched?",
+        "How does the agent continue across channels?",
+        "How are repeated patterns turned into skills?",
+        "Which changes should affect Context, Handoff, or Sediment?"
+      ],
+      "sediment_targets": [
+        "persistent memory rule",
+        "cross-channel handoff pattern",
+        "skill creation trigger",
+        "searchable history note"
+      ]
+    },
+    {
+      "inspector_id": "feishu_aily",
+      "logic_focus": "How Feishu Aily embeds agents into enterprise work surfaces such as IM, Docs, Base, approvals, tasks, and business systems.",
+      "must_read_surfaces": [
+        "Feishu Aily getting started and product docs",
+        "workflow node docs when available",
+        "Base/business-system examples",
+        "permission, approval, and collaboration docs"
+      ],
+      "tracking_surfaces": [
+        "Feishu Aily docs",
+        "Feishu Base and enterprise workflow docs",
+        "official Feishu updates"
+      ],
+      "architecture_questions": [
+        "How do agents connect to real enterprise surfaces?",
+        "How are permissions, approvals, and team handoffs handled?",
+        "How are Base/database structures generated or used?",
+        "Which changes should affect Data Modeling, Handoff, Policy/Permission, or Human/Team?"
+      ],
+      "sediment_targets": [
+        "enterprise handoff pattern",
+        "Base schema pattern",
+        "approval gate rule",
+        "Chinese enterprise productization note"
+      ]
+    },
+    {
+      "inspector_id": "coze",
+      "logic_focus": "How Coze Studio and Coze Loop represent visual workflow nodes, DAG execution, node metadata, resources, prompt debugging, eval sets, experiments, and traces.",
+      "must_read_surfaces": [
+        "Coze Studio releases and workflow docs",
+        "Coze Loop releases and eval/trace docs",
+        "node metadata and input/output map implementations",
+        "workflow examples and resources"
+      ],
+      "tracking_surfaces": [
+        "coze-dev/coze-studio releases",
+        "coze-dev/coze-loop releases",
+        "workflow, prompt, eval, and trace examples"
+      ],
+      "architecture_questions": [
+        "How are visual nodes typed and executed?",
+        "How are resources, variables, prompts, databases, and knowledge bases attached?",
+        "How do eval sets, experiments, and traces inform improvements?",
+        "Which changes should affect Data Modeling, Planning, Routing, Test, Score, or Observe/Trace?"
+      ],
+      "sediment_targets": [
+        "executable node spec",
+        "resource mapping pattern",
+        "eval set pattern",
+        "trace-to-improvement loop"
+      ]
+    },
+    {
+      "inspector_id": "deerflow",
+      "logic_focus": "How DeerFlow handles long-horizon agent tasks, subagents, memory, sandboxes, filesystem operations, skills, tools, and gateways.",
+      "must_read_surfaces": [
+        "DeerFlow releases",
+        "subagent and memory code/docs",
+        "sandbox and filesystem handling",
+        "tool, skill, and gateway examples"
+      ],
+      "tracking_surfaces": [
+        "bytedance/deer-flow releases",
+        "architecture docs or examples",
+        "long-horizon task implementations"
+      ],
+      "architecture_questions": [
+        "How is long-horizon task state represented?",
+        "How are subagents delegated and monitored?",
+        "How are sandbox, filesystem, and gateway risks controlled?",
+        "Which changes should affect Context, Routing, Action, Check, or Sediment?"
+      ],
+      "sediment_targets": [
+        "long-horizon run rule",
+        "subagent delegation pattern",
+        "sandbox action gate",
+        "filesystem rollback note"
+      ]
+    },
+    {
+      "inspector_id": "agentscope",
+      "logic_focus": "How AgentScope handles event streams, permissions, workspace sandboxing, multi-session services, middleware, tracing, evaluation, memory, handoffs, and agent teams.",
+      "must_read_surfaces": [
+        "AgentScope releases and docs",
+        "event stream and frontend docs",
+        "permission/workspace/sandbox docs",
+        "middleware, tracing, eval, memory, and team examples"
+      ],
+      "tracking_surfaces": [
+        "agentscope-ai/agentscope releases",
+        "AgentScope docs",
+        "service, event, permission, and team examples"
+      ],
+      "architecture_questions": [
+        "How are events streamed to humans or frontends?",
+        "How are permissions and workspaces enforced?",
+        "How are multi-session services and agent teams represented?",
+        "Which changes should affect Routing, Action, Observe/Trace, Policy/Permission, or Human/Team?"
+      ],
+      "sediment_targets": [
+        "event stream rail pattern",
+        "workspace permission rule",
+        "agent team routing pattern",
+        "human-in-loop surface note"
+      ]
+    }
+  ]
+}

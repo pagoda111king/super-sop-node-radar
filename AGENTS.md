@@ -59,6 +59,14 @@ Fixed inspectors live in:
 inspectors/reference-projects.json
 ```
 
+Inspector understanding contracts live in:
+
+```text
+inspectors/understanding-contracts.json
+```
+
+Use `docs/INSPECTOR_NODE_PROTOCOL.md` to avoid shallow inspection. Metadata-only reports may only recommend `watch` or `no_action`.
+
 The chief inspector report goes to:
 
 ```text
