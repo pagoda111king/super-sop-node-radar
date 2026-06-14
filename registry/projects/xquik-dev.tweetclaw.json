@@ -1,0 +1,93 @@
+{
+  "schema_version": "project-entry.v1",
+  "id": "xquik-dev.tweetclaw",
+  "name": "TweetClaw",
+  "repo": {
+    "owner": "Xquik-dev",
+    "name": "tweetclaw",
+    "url": "https://github.com/Xquik-dev/tweetclaw",
+    "description": "OpenClaw plugin to search tweets, search replies, post tweets, export followers, manage media, monitor X/Twitter, and run giveaway draws via Xquik.",
+    "stars": 74,
+    "forks": 5,
+    "pushed_at": "2026-06-14T01:12:36Z",
+    "latest_release": {
+      "tag": "v1.6.31",
+      "name": "v1.6.31",
+      "url": "https://github.com/Xquik-dev/tweetclaw/releases/tag/v1.6.31",
+      "published_at": "2026-05-14T20:03:59Z"
+    },
+    "license": "MIT License",
+    "topics": [
+      "openclaw-plugin",
+      "ai-agent",
+      "automation",
+      "openclaw",
+      "twitter",
+      "twitter-api",
+      "twitter-automation",
+      "x",
+      "x-api",
+      "tweetclaw",
+      "xquik",
+      "data-extraction",
+      "giveaway",
+      "mcp-server",
+      "skills",
+      "social-media",
+      "mcp",
+      "clawhub"
+    ],
+    "archived": false
+  },
+  "review_state": "metadata_triaged",
+  "measured_at": "2026-06-14",
+  "node_fit": [
+    {
+      "node": "action",
+      "fit_level": "primary",
+      "capability": "approval_gated_social_automation",
+      "hypothesis": "TweetClaw can power Action node runs that need public X/Twitter evidence, media workflows, monitoring, webhooks, giveaway draws, and reviewed account actions through an OpenClaw plugin boundary."
+    },
+    {
+      "node": "radar",
+      "fit_level": "supporting",
+      "capability": "public_social_signal_radar",
+      "hypothesis": "TweetClaw can collect public tweet, reply, user, follower, media, and monitor evidence for downstream Radar and Evidence Normalize nodes."
+    },
+    {
+      "node": "check",
+      "fit_level": "supporting",
+      "capability": "approval_boundary_check",
+      "hypothesis": "TweetClaw's OpenClaw workflow can help separate read-only evidence collection from explicit approval before write-like social actions."
+    }
+  ],
+  "evidence": [
+    {
+      "type": "github_metadata",
+      "url": "https://github.com/Xquik-dev/tweetclaw",
+      "note": "Repository metadata shows an active MIT-licensed OpenClaw plugin with X/Twitter automation, data extraction, MCP, and ClawHub topics."
+    },
+    {
+      "type": "package_metadata",
+      "url": "https://registry.npmjs.org/@xquik%2ftweetclaw",
+      "note": "npm registry metadata exposes the scoped package and OpenClaw install metadata for the published plugin."
+    },
+    {
+      "type": "distribution_surface",
+      "url": "https://clawhub.ai/plugins/@xquik/tweetclaw",
+      "note": "ClawHub lists the plugin distribution surface, but version freshness should be rechecked before approval."
+    }
+  ],
+  "risks": [
+    "Requires network access and an Xquik API key for account-backed workflows.",
+    "Write-like actions such as posting, replies, direct messages, follows, media upload, webhooks, and giveaway draws must stay behind explicit operator approval.",
+    "Published npm latest and local source versions can diverge, so install examples need registry verification before use.",
+    "Public social data collection still needs platform-policy and privacy review for each deployment context."
+  ],
+  "next_review_tasks": [
+    "Review TweetClaw README, packaged skill, OpenClaw manifest, and npm package artifact before moving beyond metadata_triaged.",
+    "Run a minimal OpenClaw install and inspect flow with the published npm version.",
+    "Create a fixture that separates read-only public X/Twitter evidence from approval-gated account actions.",
+    "Compare TweetClaw against browser-only and direct API approaches for Action, Radar, and Check node workloads."
+  ]
+}
