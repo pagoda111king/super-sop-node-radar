@@ -1,0 +1,47 @@
+{
+  "schema_version": "node-capability.v1",
+  "id": "action.social-automation",
+  "node": "action",
+  "capability_family": "approval_gated_social_automation",
+  "purpose": "Select tools that let node systems collect public social evidence, monitor public signals, and execute social account actions only through explicit approval boundaries.",
+  "capability_types": [
+    {
+      "id": "public_social_evidence",
+      "name": "Public Social Evidence",
+      "use_when": "A node run needs public X/Twitter searches, replies, user lookup, follower context, media references, or source URLs before research, scoring, drafting, or handoff.",
+      "avoid_when": "The task needs private account data, credentials, hidden media, or account actions without explicit operator approval."
+    },
+    {
+      "id": "approved_social_actions",
+      "name": "Approved Social Actions",
+      "use_when": "A workflow needs post, reply, direct message, follow, media upload, webhook, giveaway, or similar account actions after the operator reviews the intent.",
+      "avoid_when": "The agent should only gather evidence or draft recommendations."
+    },
+    {
+      "id": "social_monitoring_webhooks",
+      "name": "Social Monitoring And Webhooks",
+      "use_when": "A Monitor or Ops pattern needs account or keyword monitoring plus event delivery into downstream nodes.",
+      "avoid_when": "The workflow cannot operate with network services, API keys, or ongoing account-backed access."
+    }
+  ],
+  "project_refs": [
+    {
+      "project_id": "xquik-dev.tweetclaw",
+      "capability_type": "public_social_evidence",
+      "review_state": "metadata_triaged",
+      "note": "Candidate for collecting public X/Twitter source packets before Radar, Evidence Normalize, Score, or Handoff nodes consume them."
+    },
+    {
+      "project_id": "xquik-dev.tweetclaw",
+      "capability_type": "approved_social_actions",
+      "review_state": "metadata_triaged",
+      "note": "Candidate for account-backed actions only when the operator explicitly approves the requested action."
+    },
+    {
+      "project_id": "xquik-dev.tweetclaw",
+      "capability_type": "social_monitoring_webhooks",
+      "review_state": "metadata_triaged",
+      "note": "Candidate for monitor and webhook workflows, pending install, permission, and delivery tests."
+    }
+  ]
+}
